@@ -19,41 +19,45 @@ public class Sorter {
         return result.toString();
     }
 
+    public static void bubbleSort(int[] array) {
+        boolean swapOccured;
+        int count = 1;
 
-    public static void bubbleSort(int[] array, String order) {
-        // how do we know we're done sorting/?
-        // we have not performed a swap and we are at the end of the array
-        boolean swap = false;
-        boolean ascendingOrder = order.equalsIgnoreCase("+");
-        boolean descendingOrder = order.equalsIgnoreCase("-");
-
-        System.out.println("Starting bubble sort...");
         do {
-            swap = false;
-            for (int i = 0; i < array.length - 1; i++) {
-                if (ascendingOrder && array[i] >= array[i+1]) {  // swap ascending
+            swapOccured = false;
+            for (int i=0; i<array.length-1; i++) {
+                if (array[i] >= array[i+1]) {  // ascending order
                     int temp = array[i];
                     array[i] = array[i+1];
                     array[i+1] = temp;
-                    swap = true;
-                } else if (descendingOrder && array[i] <= array[i+1]) {  // swap descending
-                    int temp = array[i];
-                    array[i] = array[i+1];
-                    array[i+1] = temp;
-                    swap = true;
+                    swapOccured = true;
                 }
             }
 
-            System.out.println(arrayToString(array));
-        } while (swap);
-
-        System.out.println("Sorted!");
+            System.out.println("Pass " + count + ": " + arrayToString(array));
+            count = count + 1;
+        } while (swapOccured);  // if a swap did not occur, the array is already sorted
     }
 
-    public static int[] selectionSort(int[] array) {
-        // pass
-        return array;
+    public static void selectionSort(int[] array) {
+        int count = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            int min = array[i];
+
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] < min) {
+                    int newMin = array[j];
+                    array[j] = array[i];
+                    array[i] = newMin;
+                }
+            }
+
+            count = count + 1;
+            System.out.println("Pass " + count + ": " + arrayToString(array));
+        }
     }
+
     public static int[] mergeSort(int[] array) {
         // pass
         return array;
