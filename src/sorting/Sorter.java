@@ -19,6 +19,32 @@ public class Sorter {
         return result.toString();
     }
 
+    private static void swap(int[] array, int left_index, int right_index) {
+        int temp = array[left_index];
+        array[left_index] = array[right_index];
+        array[right_index] = temp;
+    }
+
+    public static int partition(int[] array, int left, int right) {
+        if (array.length == 1)
+            return 0;
+
+        int pivot = array[right];  // last element
+        int i = left - 1;  // cursor for less than pivot, j is for equal to or greater than pivot
+
+
+        for (int j=left; j<=right - 1; j++) {
+            if (array[j] < pivot) {
+                i += 1;
+                swap(array, j, i);
+            }
+        }
+
+        swap(array, i+1, right);  // final swap
+
+        return i + 1;
+    }
+
     public static void bubbleSort(int[] array) {
         boolean swapOccured;
         int count = 1;
@@ -27,9 +53,7 @@ public class Sorter {
             swapOccured = false;
             for (int i=0; i<array.length-1; i++) {
                 if (array[i] >= array[i+1]) {  // ascending order
-                    int temp = array[i];
-                    array[i] = array[i+1];
-                    array[i+1] = temp;
+                    swap(array, i, i+1);
                     swapOccured = true;
                 }
             }
@@ -47,9 +71,7 @@ public class Sorter {
 
             for (int j = i + 1; j < array.length; j++) {
                 if (array[j] < min) {
-                    int newMin = array[j];
-                    array[j] = array[i];
-                    array[i] = newMin;
+                    swap(array, j, i);
                 }
             }
 
@@ -62,10 +84,19 @@ public class Sorter {
         // pass
         return array;
     }
-    public static int[] quickSort(int[] array) {
-        // pass
-        return array;
-    }
+    /* public static void quickSort(int[] array, int left_index, int right_index) {
+        // left and right indexes define the scope of the subarray that is to be sorted
+        if (left_index >= right_index)
+            // if left and right point to the same index, they point to a subarray with 1 element,
+            // which is already sorted by default
+            return;
+
+        int pivot_index = partition(array, left_index, right_index);
+
+        quickSort(array, left_index, pivot_index - 1);
+        quickSort(array, pivot_index + 1, right_index);
+
+    } */
     public static int[] radixSort(int[] array) {
         // pass
         return array;

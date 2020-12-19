@@ -21,7 +21,7 @@ public class Driver {
     }
 
     public static void main(String[] args) {
-        int[] a = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+        /* int[] a = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
         System.out.println("\nBUBBLE SORT");
         System.out.println("Before: " + arrayToString(a));
         System.out.println("executing...");
@@ -33,7 +33,13 @@ public class Driver {
         System.out.println("Before: " + arrayToString(b));
         System.out.println("executing...");
         Sorter.selectionSort(b);
-        System.out.println("After: " + arrayToString(b));
+        System.out.println("After: " + arrayToString(b)); */
+
+        int[] x = {6, 3, 2, 7, 5, 1, 4};
+        System.out.println("Non-partitioned: " + arrayToString(x));
+        int pivot_index = Sorter.partition(x, 0, 6);
+//        System.out.println("Pivot index: ");
+        System.out.println("Partitioned: " + arrayToString(x));
 
         /* System.out.println("Before: " + arrayToString(array));
         Sorter.mergeSort(array);
