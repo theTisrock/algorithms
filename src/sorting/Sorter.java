@@ -26,23 +26,27 @@ public class Sorter {
     }
 
     public static int partition(int[] array, int left, int right) {
-        if (array.length == 1)
-            return 0;
+        int pivot = array[(left + right) / 2];
 
-        int pivot = array[right];  // last element
-        int i = left - 1;  // cursor for less than pivot, j is for equal to or greater than pivot
+        while (left < right) {  // lesser values must be to the left of the pivot
+            while (array[left] < pivot) {
+                left++;
+            }
+            while (array[right] > pivot) {  // greater values must be to the right of the pivot
+                right--;
+            }
 
+            if (left <= right) {  // one of the above constraints has been violated
+                int tmp = array[left];
+                array[left] = array[right];
+                array[right] = tmp;
 
-        for (int j=left; j<=right - 1; j++) {
-            if (array[j] < pivot) {
-                i += 1;
-                swap(array, j, i);
+                left++;
+                right--;
             }
         }
 
-        swap(array, i+1, right);  // final swap
-
-        return i + 1;
+        return left;
     }
 
     public static void bubbleSort(int[] array) {
