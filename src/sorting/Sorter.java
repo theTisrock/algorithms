@@ -84,26 +84,24 @@ public class Sorter {
         }
     }
 
+    public static void quickSort(int[] array, int left, int right) {
+        int index = partition(array, left, right);
+
+        if (left < index - 1)
+            quickSort(array, left, index - 1);
+        if (index < right)
+            quickSort(array, index, right);
+    }
+
+    /*
     public static int[] mergeSort(int[] array) {
         // pass
         return array;
     }
-    /* public static void quickSort(int[] array, int left_index, int right_index) {
-        // left and right indexes define the scope of the subarray that is to be sorted
-        if (left_index >= right_index)
-            // if left and right point to the same index, they point to a subarray with 1 element,
-            // which is already sorted by default
-            return;
 
-        int pivot_index = partition(array, left_index, right_index);
-
-        quickSort(array, left_index, pivot_index - 1);
-        quickSort(array, pivot_index + 1, right_index);
-
-    } */
     public static int[] radixSort(int[] array) {
         // pass
         return array;
-    }
+    }  */
 
 }
