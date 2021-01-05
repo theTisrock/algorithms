@@ -35,18 +35,20 @@ public class Driver {
         Sorter.selectionSort(b);
         System.out.println("After: " + arrayToString(b)); */
 
-        int[] x = {6, 3, 2, 7, 5, 1, 4};
+        int[] x = { 7, 6, 5, 4, 3, 2, 1 };
         System.out.println("Non-partitioned: " + arrayToString(x));
         int pivot_index = Sorter.partition(x, 0, 6);
-//        System.out.println("Pivot index: ");
+        System.out.println("Pivot index: " + pivot_index + ", Pivot value: " + x[pivot_index]);
         System.out.println("Partitioned: " + arrayToString(x));
 
-        /* System.out.println("Before: " + arrayToString(array));
-        Sorter.mergeSort(array);
-        System.out.println("After: " + arrayToString(array));
+        int[] y = { 35, 15, 20, 40, 30, 10, 25} ;
+        System.out.println("\nBefore quick sort: " + arrayToString(y));
+        Sorter.quickSort(y, 0, 6);
+        System.out.println("After quick sort: " + arrayToString(y));
 
+        /*
         System.out.println("Before: " + arrayToString(array));
-        Sorter.quickSort(array);
+        Sorter.mergeSort(array);
         System.out.println("After: " + arrayToString(array));
 
         System.out.println("Before: " + arrayToString(array));
